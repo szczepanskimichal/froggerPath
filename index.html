@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body {
+      font-family: system-ui, Arial;
+      margin: 20px;
+    }
+
+    .wrap {
+      display: grid;
+      gap: 16px;
+      max-width: 900px;
+    }
+
+    .board {
+      display: grid;
+      gap: 4px;
+      /* settes i updateView() basert på colCount */
+    }
+
+    .cell {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      user-select: none;
+      border: 1px solid #ddd;
+    }
+
+    .safe {
+      background: #f3f4f6;
+    }
+
+    .water {
+      background: #93c5fd;
+    }
+
+    .rock {
+      background: #a1a1aa;
+    }
+
+    .goal {
+      background: #86efac;
+    }
+
+
+
+    .pathHint {
+      box-shadow: inset 0 0 0 3px rgba(16, 185, 129, 0.45);
+    }
+
+    .controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .meta {
+      color: #374151;
+      font-size: 14px;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+  </style>
+  <script src="./js/common.js"></script>
+  <script src="./js/controller.js"></script>
+  <script src="./js/model.js"></script>
+  <script src="./js/view.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="controls">
+      <button>◀ Prev</button>
+      <button>Next ▶</button>
+      <button>Nytt brett</button>
+      <button onclick="togglePathHint()">Vis/skjul sti</button>
+    </div>
+
+    <div class="meta" id="meta"></div>
+    <div id="board" class="board"></div>
+  </div>
+
+  <script>
+    updateView();
+  </script>
+</body>
+
+</html>
